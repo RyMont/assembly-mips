@@ -1,0 +1,24 @@
+.data
+    digite:.asciiz"\nDigite o valor em dolares: "
+    dolares:.asciiz"\nO valor em reais é: R$"
+.text
+main:
+
+    #ler numero
+    li $v0, 4
+    la $a0, digite
+    syscall
+    li $v0, 5
+    syscall
+    add $t0, $v0, 0
+
+    #convertendo pra real
+    mul $t0, $t0, 5
+
+    #mostrando na tela
+    li $v0, 4
+    la $a0 dolares
+    syscall
+    li $v0, 1
+    add $a0, $t0, 0
+    syscall
